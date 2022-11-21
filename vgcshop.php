@@ -20,6 +20,9 @@ define('PLUGIN_INC',PLUGIN_DIR.'/inc/');
 function vgc_register_styles() {
     wp_register_style( 'vgc-style', PLUGIN_URL.'assets/css/styles.css');
     wp_enqueue_style( 'vgc-style' );
+
+    wp_register_script( 'vgc-js', PLUGIN_URL.'assets/js/main.js',['jquery']);
+    wp_enqueue_script( 'vgc-js' );
 }
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'vgc_register_styles' );
