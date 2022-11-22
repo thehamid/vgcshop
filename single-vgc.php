@@ -25,9 +25,14 @@
         </div>
     </div>
 
-    <div class="form row">
+    <div class="vgc-form row">
         <div class="preview_form col-lg-6">
-           <img id="displayPic" src="" class="pic">
+<!--           <img id="displayPic" src="" class="pic">-->
+            <article class="vgc-card">
+                <div id="displayPic"  class="pic" style="">
+                    <h5 id="donTxt">500000</h5>
+                </div>
+            </article>
         </div>
         <div class="inputs_form col-lg-6">
             <div class="card-form">
@@ -63,7 +68,10 @@
                     </div>
                     <div class="col-12">
                         <label  class="form-label">مبلغ اهدایی به تومان </label>
-                        <input id="input_number" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
+                        <input id="dontionprice" type="text" pattern="[0-9]*" inputmode="numeric">
+
+
+                        <input id="don_price_input" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
                         <span id="farsi">.</span>
                     </div>
 

@@ -9,16 +9,28 @@
     transform: scale(1.1);
 }
 
-#displayPic {
+.vgc-form .vgc-card #displayPic {
     width: 750px;
     height: 250px;
     margin-left: 20px;
     overflow: hidden;
+    -webkit-box-shadow: 1px 5px 6px 0px black;
+    box-shadow: 1px 5px 6px 0px black;
+    border-radius: 22px;
 }
 
-.pic {
+.vgc-form .vgc-card .pic {
+    position: relative;
     max-width: 400px;
     width:100%;
     height:100%;
     object-fit: cover;
+}
+
+.vgc-form .vgc-card .pic span {
+    position: absolute;
+    bottom: 5px;
+    right: 50px;
+    color: #e2e3e5;
+    font-size: 35px;
 }
