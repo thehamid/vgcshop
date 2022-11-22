@@ -1,5 +1,8 @@
 
-window.onload=changeImage(1);
+
+document.addEventListener("DOMContentLoaded", () => {
+    changeImage(3);
+});
 
 
 changeImage(1);
