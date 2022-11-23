@@ -11,6 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById('donTxt').innerHTML = this.value+" تومان";
         }
     });
+    document.querySelectorAll("input[name='vgc-option']").forEach((input) => {
+        input.addEventListener('change', radioClick);
+    });
 });
 
 function changeImage(index) {
@@ -19,23 +22,13 @@ function changeImage(index) {
     document.getElementById("displayPic").style ="background-image:url('"+img+"')";
 }
 
+function radioClick() {
+    let radioValue = document.querySelector('input[name="vgc-option"]:checked').value;
+    console.log("click");
+    console.log(radioValue);
+    document.querySelector('input[name="vgc-value"]').value=radioValue;
+    document.getElementById('donTxt').innerHTML =radioValue+" تومان";
+
+}
 
 
-$(document).ready(function(){
-    $(".btn-check").click(function(){
-
-        var radioValue = $("input[name='project-option']:checked").val();
-
-        if(radioValue){
-
-            $("input[name='value']").val(radioValue);
-            $('#farsi').text(wordifyfa(radioValue)+"تومان");
-            $('#donTxt').text(radioValue);
-        }
-
-    });
-});
-
-$('#input_number').keyup(function () {
-    $('#farsi').text(wordifyfa($(this).val())+"تومان");
-});

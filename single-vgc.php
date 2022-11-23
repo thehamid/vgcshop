@@ -40,23 +40,23 @@
                     <div class="col-12 d-flex flex-column">
                         <label  class="form-label">انتخاب مبلغ اهدایی</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-                            <input type="radio" class="btn-check" name="project-option" id="btnradio1" autocomplete="off" value="50000" >
+                            <input type="radio" class="btn-check" name="vgc-option" id="btnradio1" autocomplete="off" value="50000" >
                             <label class="btn btn-outline-primary" for="btnradio1">50,000 تومان</label>
 
-                            <input type="radio" class="btn-check" name="project-option" id="btnradio2" autocomplete="off" value="100000">
+                            <input type="radio" class="btn-check" name="vgc-option" id="btnradio2" autocomplete="off" value="100000">
                             <label class="btn btn-outline-primary" for="btnradio2">100,000 تومان</label>
 
-                            <input type="radio" class="btn-check" name="project-option" id="btnradio3" autocomplete="off" value="200000">
+                            <input type="radio" class="btn-check" name="vgc-option" id="btnradio3" autocomplete="off" value="200000">
                             <label class="btn btn-outline-primary" for="btnradio3">200,000 تومان</label>
 
-                            <input type="radio" class="btn-check" name="project-option" id="btnradio4" autocomplete="off" value="500000">
+                            <input type="radio" class="btn-check" name="vgc-option" id="btnradio4" autocomplete="off" value="500000">
                             <label class="btn btn-outline-primary" for="btnradio4">500,000 تومان</label>
                         </div>
                     </div>
                     <div class="col-12">
                         <label  class="form-label">مبلغ اهدایی به تومان </label>
 
-                        <input id="don_price_input" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
+                        <input id="don_price_input" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="vgc-value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
                         <span id="farsi">.</span>
                     </div>
 
