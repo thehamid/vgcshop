@@ -30,26 +30,13 @@
 <!--           <img id="displayPic" src="" class="pic">-->
             <article class="vgc-card">
                 <div id="displayPic"  class="pic" style="">
-                    <h5 id="donTxt">500000</h5>
+                    <span id="donTxt">20000 تومان</span>
                 </div>
             </article>
         </div>
         <div class="inputs_form col-lg-6">
             <div class="card-form">
                 <form method="post" class="row g-3">
-                    <input type="hidden" class="form-control" name="project_id" value="<?php the_ID(); ?>">
-                    <input type="hidden" class="form-control" name="project_link" value="<?php the_permalink(); ?>">
-                    <div class="col-12">
-                        <label class="form-label">نام شما</label>
-                        <input type="text" class="form-control" name="name"   required=""
-                               oninvalid="this.setCustomValidity('وارد کردن نام الزامی است')"
-                               oninput="setCustomValidity('')"/>
-
-                    </div>
-                    <div class="col-12">
-                        <label  class="form-label">تلفن تماس</label>
-                        <input type="text" class="form-control" name="phone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
-                    </div>
                     <div class="col-12 d-flex flex-column">
                         <label  class="form-label">انتخاب مبلغ اهدایی</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
@@ -68,13 +55,38 @@
                     </div>
                     <div class="col-12">
                         <label  class="form-label">مبلغ اهدایی به تومان </label>
-                        <input id="dontionprice" type="text" pattern="[0-9]*" inputmode="numeric">
-
 
                         <input id="don_price_input" type="text" class="form-control" placeholder="لطفا مبلغ را به تومان وارد کنید..." name="value" required="" oninvalid="this.setCustomValidity('وارد کردن مبلغ الزامی است')"  oninput="setCustomValidity('')">
                         <span id="farsi">.</span>
                     </div>
 
+                    <div class="col-12">
+                        <label class="form-label">نام گبرنده</label>
+                        <input type="text" class="form-control" name="recivername"   required=""
+                               oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
+                               oninput="setCustomValidity('')"/>
+
+                    </div>
+                    <div class="col-12">
+                        <label  class="form-label">موبایل گیرنده </label>
+                        <input type="text" class="form-control" name="reciverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">پیام شما</label>
+                        <input type="text" class="form-control" name="message"  />
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label">نام فرستنده</label>
+                        <input type="text" class="form-control" name="recivername"   required=""
+                               oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
+                               oninput="setCustomValidity('')"/>
+                    </div>
+
+                    <div class="col-12">
+                        <label  class="form-label">موبایل فرستنده</label>
+                        <input type="text" class="form-control" name="reciverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                    </div>
 
 
                     <div class="col-12">
