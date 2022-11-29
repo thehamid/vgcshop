@@ -10,9 +10,18 @@
  * Text Domain:       vgcshop
  */
 
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) exit;
+
 define('PLUGIN_DIR',plugin_dir_path(__FILE__));
 define('PLUGIN_URL',plugin_dir_url(__FILE__));
 define('PLUGIN_INC',PLUGIN_DIR.'/inc/');
+include ( 'inc/activate.php' );
+
+register_activation_hook( __FILE__, 'vgc_activate_plugin' );
+
+
 
 /**
  * Registers a stylesheet.
@@ -23,20 +32,12 @@ function vgc_register_styles() {
 
     wp_register_script( 'vgc-js', PLUGIN_URL.'assets/js/main.js',['jquery']);
     wp_enqueue_script( 'vgc-js' );
+    wp_register_script( 'html2canvas', PLUGIN_URL.'assets/js/html2canvas.min.js');
+    wp_enqueue_script( 'html2canvas' );
 }
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'vgc_register_styles' );
 add_action( 'admin_enqueue_scripts', 'vgc_register_styles' );
-
-function vgcshop_activation(){
-
-}
-register_activation_hook('__FILE__','vgcshop_activation');
-
-function vgcshop_deactivation(){
-
-}
-register_deactivation_hook('__FILE__','vgcshop_deactivation');
 
 
 if(is_admin()){
@@ -49,3 +50,4 @@ function vgc_page(){
     include 'single-vgc.php';
 }
 add_shortcode('vgcshop', 'vgc_page');
+

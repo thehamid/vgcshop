@@ -26,14 +26,16 @@
     </div>
 
     <div class="vgc-form row">
-        <div class="preview_form col-lg-6">
+        <div id="preview" class="preview_form col-lg-6">
 <!--           <img id="displayPic" src="" class="pic">-->
             <article class="vgc-card">
                 <div id="displayPic"  class="pic" style="">
                     <span id="donTxt">20000 تومان</span>
                 </div>
             </article>
+            <span id="sender" > حمید عزیز این کارت از طرف غلام برای شماست</span>
         </div>
+
         <div class="inputs_form col-lg-6">
             <div class="card-form">
                 <form method="post" class="row g-3">
