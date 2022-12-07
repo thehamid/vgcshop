@@ -1,4 +1,36 @@
 <?php
+global $wpdb;
+if (isset($_POST['submit'])) {
+
+    $table = $wpdb->prefix .'vgcshop_orders';
+    $wpdb->insert($table,
+        [
+            'price_card' => $_POST['vgc-value'],
+            'receiver_name' => $_POST['receivername'],
+            'receiver_phone' => $_POST['receiverphone'],
+            'message' => $_POST['message'],
+            'sender_name' => $_POST['sendername'],
+            'sender_phone' => $_POST['senderphone'],
+            'card_id' => 1,
+            'code' => 123,
+            'trans_id' => 0,
+            'alert' => 0,
+            'date_order' => date("Y-m-d h:i:sa"),
+            'status' => -2,
+        ]);
+
+
+    function toEnNumber($input)
+    {
+        $replace_pairs = array(
+            '۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4', '۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
+            '٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4', '٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9'
+        );
+
+        return strtr($input, $replace_pairs);
+    }
+}
+
 ?>
 <main>
     <div class="cards">
@@ -26,14 +58,16 @@
     </div>
 
     <div class="vgc-form row">
-        <div class="preview_form col-lg-6">
+        <div id="preview" class="preview_form col-lg-6">
 <!--           <img id="displayPic" src="" class="pic">-->
             <article class="vgc-card">
                 <div id="displayPic"  class="pic" style="">
                     <span id="donTxt">20000 تومان</span>
                 </div>
             </article>
+            <span id="sender" > حمید عزیز این کارت از طرف غلام برای شماست</span>
         </div>
+
         <div class="inputs_form col-lg-6">
             <div class="card-form">
                 <form method="post" class="row g-3">
@@ -62,14 +96,14 @@
 
                     <div class="col-12">
                         <label class="form-label">نام گبرنده</label>
-                        <input type="text" class="form-control" name="recivername"   required=""
+                        <input type="text" class="form-control" name="receivername"   required=""
                                oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
                                oninput="setCustomValidity('')"/>
 
                     </div>
                     <div class="col-12">
                         <label  class="form-label">موبایل گیرنده </label>
-                        <input type="text" class="form-control" name="reciverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                        <input type="text" class="form-control" name="receiverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
                     </div>
                     <div class="col-12">
                         <label class="form-label">پیام شما</label>
@@ -78,22 +112,22 @@
 
                     <div class="col-12">
                         <label class="form-label">نام فرستنده</label>
-                        <input type="text" class="form-control" name="recivername"   required=""
+                        <input type="text" class="form-control" name="sendername"   required=""
                                oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
                                oninput="setCustomValidity('')"/>
                     </div>
 
                     <div class="col-12">
                         <label  class="form-label">موبایل فرستنده</label>
-                        <input type="text" class="form-control" name="reciverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                        <input type="text" class="form-control" name="senderphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
                     </div>
 
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-theme" name="pay"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>
+                        <button type="submit" class="btn btn-theme" name="submit"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>
                     </div>
                 </form>
-                <p class="text-danger"><?php echo $error; ?></p>
+                <p class="text-danger"></p>
 
             </div>
 

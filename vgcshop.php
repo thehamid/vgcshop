@@ -4,15 +4,24 @@
  * Plugin Name:       گیفت کارت مجازی
  * Plugin URI:        https://thehamid.ir
  * Description:       ساخت و فروش گیفت کارت مجازی
- * Version:           1.0.1
+ * Version:           0.2.0
  * Author:            Hamid Amini
- * Author URI:        https://thehamid
+ * Author URI:        https://thehamid.ir
  * Text Domain:       vgcshop
  */
+
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) exit;
 
 define('PLUGIN_DIR',plugin_dir_path(__FILE__));
 define('PLUGIN_URL',plugin_dir_url(__FILE__));
 define('PLUGIN_INC',PLUGIN_DIR.'/inc/');
+include ( 'inc/activate.php' );
+
+register_activation_hook( __FILE__, 'vgc_activate_plugin' );
+
+
 
 /**
  * Registers a stylesheet.
@@ -23,24 +32,16 @@ function vgc_register_styles() {
 
     wp_register_script( 'vgc-js', PLUGIN_URL.'assets/js/main.js',['jquery']);
     wp_enqueue_script( 'vgc-js' );
+    wp_register_script( 'html2canvas', PLUGIN_URL.'assets/js/html2canvas.min.js');
+    wp_enqueue_script( 'html2canvas' );
 }
 // Register style sheet.
 add_action( 'wp_enqueue_scripts', 'vgc_register_styles' );
 add_action( 'admin_enqueue_scripts', 'vgc_register_styles' );
 
+
 function vgcshop_activation(){
-    global $wpdb;
 
-    $tblname = 'test_table';
-    $wp_track_table = $wpdb->prefix . "$tblname";
-
-    $sql = "CREATE TABLE IF NOT EXISTS $wp_track_table ( ";
-    $sql .= "  `id`  int(11)   NOT NULL auto_increment, ";
-    $sql .= "  `pincode`  int(128)   NOT NULL, ";
-    $sql .= "  PRIMARY KEY `order_id` (`id`) ";
-    $sql .= ") ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ; ";
-    require_once( ABSPATH . '/wp-admin/includes/upgrade.php' );
-    dbDelta($sql);
 
 }
 register_activation_hook('__FILE__','vgcshop_activation');
@@ -61,3 +62,4 @@ function vgc_page(){
     include 'single-vgc.php';
 }
 add_shortcode('vgcshop', 'vgc_page');
+
