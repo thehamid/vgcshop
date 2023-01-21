@@ -17,8 +17,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 define('PLUGIN_DIR',plugin_dir_path(__FILE__));
 define('PLUGIN_URL',plugin_dir_url(__FILE__));
 define('PLUGIN_INC',PLUGIN_DIR.'/inc/');
+define('PLUGIN_USER',PLUGIN_DIR.'/inc/user');
 include ( 'inc/activate.php' );
-
+include (PLUGIN_INC . 'user/VGCard.php');
 register_activation_hook( __FILE__, 'vgc_activate_plugin' );
 
 
@@ -62,4 +63,8 @@ function vgc_page(){
     include 'single-vgc.php';
 }
 add_shortcode('vgcshop', 'vgc_page');
+
+
+
+
 
