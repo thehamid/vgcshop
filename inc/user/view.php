@@ -32,11 +32,13 @@ $card = $wpdb->get_results( $wpdb->prepare(
 
 <?php get_header(); ?>
 <div class="container">
-    <?php var_dump($card[0]); ?>
-    <h1>Hello  <?php echo $string_code; ?></h1>
     <?php
     foreach ($card as $key => $val) {?>
-        <h1>قیمت: <?php echo $val['price_card']; ?></h1>
+        <img src="<?php echo $val['card_id']; ?>"/>
+        <p>قیمت: <?php echo $val['price_card']; ?></p>
+        <p>فرستنده: <?php echo $val['sender_name']; ?></p>
+        <p>گیرنده: <?php echo $val['receiver_name']; ?></p>
+        <p>پیام: <?php echo $val['message']; ?></p>
 
     <?php
     }

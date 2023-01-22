@@ -20,6 +20,8 @@ function changeImage(index) {
     var img = document.createElement("img");
     img = document.getElementById("sel" + index).src;
     document.getElementById("displayPic").style ="background-image:url('"+img+"')";
+    document.getElementById("inputPic").attr('value','YOUR_VALUE');
+
 }
 
 function radioClick() {

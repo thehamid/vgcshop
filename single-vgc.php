@@ -59,7 +59,7 @@ if (isset($_POST['submit'])) {
 
     <div class="vgc-form row">
         <div id="preview" class="preview_form col-lg-6">
-<!--           <img id="displayPic" src="" class="pic">-->
+           <input id="inputPic" name="img_url" type="hidden" value="">
             <article class="vgc-card">
                 <div id="displayPic"  class="pic" style="">
                     <span id="donTxt">20000 تومان</span>
