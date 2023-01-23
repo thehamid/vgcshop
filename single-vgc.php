@@ -11,8 +11,8 @@ if (isset($_POST['submit'])) {
             'message' => $_POST['message'],
             'sender_name' => $_POST['sendername'],
             'sender_phone' => $_POST['senderphone'],
-            'card_id' => 1,
-            'code' => 123,
+            'card_id' => $_POST['img_url'],
+            'code' => 321,
             'trans_id' => 0,
             'alert' => 0,
             'date_order' => date("Y-m-d h:i:sa"),
@@ -59,18 +59,18 @@ if (isset($_POST['submit'])) {
 
     <div class="vgc-form row">
         <div id="preview" class="preview_form col-lg-6">
-           <input id="inputPic" name="img_url" type="hidden" value="">
             <article class="vgc-card">
                 <div id="displayPic"  class="pic" style="">
-                    <span id="donTxt">20000 تومان</span>
+                    <span id="donTxt"></span>
                 </div>
             </article>
-            <span id="sender" > حمید عزیز این کارت از طرف غلام برای شماست</span>
+
         </div>
 
         <div class="inputs_form col-lg-6">
             <div class="card-form">
                 <form method="post" class="row g-3">
+                    <input id="inputPic" name="img_url" type="hidden" value="">
                     <div class="col-12 d-flex flex-column">
                         <label  class="form-label">انتخاب مبلغ اهدایی</label>
                         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">

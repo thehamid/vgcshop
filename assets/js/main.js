@@ -1,5 +1,4 @@
 
-
 document.addEventListener("DOMContentLoaded", () => {
     changeImage(1);
     const donationprice = document.getElementById('don_price_input');
@@ -20,7 +19,7 @@ function changeImage(index) {
     var img = document.createElement("img");
     img = document.getElementById("sel" + index).src;
     document.getElementById("displayPic").style ="background-image:url('"+img+"')";
-    document.getElementById("inputPic").attr('value','YOUR_VALUE');
+    document.getElementById("inputPic").setAttribute('value',img);
 
 }
 

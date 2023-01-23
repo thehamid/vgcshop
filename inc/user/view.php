@@ -34,12 +34,13 @@ $card = $wpdb->get_results( $wpdb->prepare(
 <div class="container">
     <?php
     foreach ($card as $key => $val) {?>
-        <img src="<?php echo $val['card_id']; ?>"/>
-        <p>قیمت: <?php echo $val['price_card']; ?></p>
-        <p>فرستنده: <?php echo $val['sender_name']; ?></p>
-        <p>گیرنده: <?php echo $val['receiver_name']; ?></p>
-        <p>پیام: <?php echo $val['message']; ?></p>
-
+        <div class="container">
+            <img class="vgc-card-view" src="<?php echo $val['card_id']; ?>"/>
+            <p>قیمت: <?php echo $val['price_card']; ?></p>
+            <p>فرستنده: <?php echo $val['sender_name']; ?></p>
+            <p>گیرنده: <?php echo $val['receiver_name']; ?></p>
+            <p>پیام: <?php echo $val['message']; ?></p>
+        </div>
     <?php
     }
     ?>

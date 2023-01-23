@@ -34,3 +34,16 @@
     color: #e2e3e5;
     font-size: 35px;
 }
+
+/*------------View Page Style---------*/
+.vgc-card-view{
+    max-width: 400px;
+    width: 100%;
+    height: auto;
+    margin-left: 20px;
+    overflow: hidden;
+    object-fit: cover;
+    -webkit-box-shadow: 1px 5px 6px 0 black;
+    box-shadow: 1px 5px 6px 0 black;
+    border-radius: 22px;
+}
