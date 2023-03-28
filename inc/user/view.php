@@ -1,6 +1,5 @@
 <?php
 global $table;
-global $pr_id;
 global $wpdb;
 global $card;
 
@@ -14,16 +13,14 @@ $pos = strrpos($request_uri, 'vgc/');
 $original_string = $pos === false ? $request_uri : substr($request_uri, $pos + 4);
 $string_code = str_replace('/', '', $original_string);
 
+var_dump($string_code);
 
-$pr_id='123';
 $table='vgcshop_orders';
 
-$card = $wpdb->get_results( $wpdb->prepare(
-    " SELECT * FROM {$wpdb->prefix}vgcshop_orders WHERE CODE ={$string_code}"
 
-),ARRAY_A);
+$card = $wpdb->get_results($wpdb->prepare("SELECT * FROM {$wpdb->prefix}vgcshop_orders WHERE code = %s", $string_code),ARRAY_A);
 
-
+//var_dump($card);
 
 
 

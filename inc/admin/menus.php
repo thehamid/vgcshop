@@ -113,5 +113,5 @@ function orders_card_list(){
 
 function order_vgc_list_page() {
 
-    include 'order_list.php';
+    include 'order_card_list.php';
 }
