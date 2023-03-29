@@ -60,15 +60,34 @@ function generateRandomString($length) {
 <main>
     <?php if($result==0){ ?>
 <!--  new form code multi step-->
-        <div class="container mt-5">
+        <div class="container">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-12">
                     <form method="post" id="regForm">
-                        <h1 id="register">Donate</h1>
                         <div class="all-steps" id="all-steps"> <span class="step"></span> <span class="step"></span> <span class="step"></span> <span class="step"></span> </div>
                         <div class="tab">
                             <div class="cards">
                                 <div class="row">
+                                    <?php
+
+                                    $args = array('category_name' => $post_slug, 'post_type' => 'products');
+                                    $posts = get_posts($args);
+                                    foreach($posts as $post) : setup_postdata($post); ?>
+                                        <article class="product-item col-sm-6 col-md-4 col-lg-3" >
+                                            <a href="<?php the_permalink(); ?>">
+
+                                                <?php the_post_thumbnail(); ?>
+
+
+                                                <div class="title"><?php the_title(); ?></div>
+
+
+
+                                            </a>
+                                        </article>
+                                    <?php endforeach;?>
+
+
                                     <?php
                                     $count=0;
                                     $args = array(
@@ -128,111 +147,57 @@ function generateRandomString($length) {
 
                         </div>
                         <div class="tab">
-                            <p><input placeholder="First Name" oninput="this.className = ''" name="first"></p>
-                            <p><input placeholder="Last Name" oninput="this.className = ''" name="last"></p>
-                            <p><input placeholder="Email" oninput="this.className = ''" name="email"></p>
-                            <p><input placeholder="Phone" oninput="this.className = ''" name="phone"></p>
-                            <p><input placeholder="Street Address" oninput="this.className = ''" name="address"></p>
-                            <p><input placeholder="City" oninput="this.className = ''" name="city"></p>
-                            <p><input placeholder="State" oninput="this.className = ''" name="state"></p>
-                            <p><input placeholder="Country" oninput="this.className = ''" name="country"></p>
+                            <div class="col-12">
+                                <label class="form-label">نام گبرنده</label>
+                                <input type="text" class="form-control" name="receivername"   required=""
+                                       oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
+                                       oninput="setCustomValidity('')"/>
+
+                            </div>
+                            <div class="col-12">
+                                <label  class="form-label">موبایل گیرنده </label>
+                                <input type="text" class="form-control" name="receiverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">پیام شما</label>
+                                <input type="text" class="form-control" name="message"  />
+                            </div>
+
+                            <div class="col-12">
+                                <label class="form-label">نام فرستنده</label>
+                                <input type="text" class="form-control" name="sendername"   required=""
+                                       oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
+                                       oninput="setCustomValidity('')"/>
+                            </div>
+
+                            <div class="col-12">
+                                <label  class="form-label">موبایل فرستنده</label>
+                                <input type="text" class="form-control" name="senderphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
+                            </div>
 
                         </div>
                         <div class="tab">
-                            <p><input placeholder="Credit Card #" oninput="this.className = ''" name="email"></p>
-                            <p>Exp Month
-                                <select id="month">
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                </select></p>
-                            <p>Exp Year
-                                <select id="year">
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                </select></p>
-
-                            <p><input placeholder="CVV" oninput="this.className = ''" name="phone"></p>
+                                <h2>پیش نمایش کارت</h2>
                         </div>
 
-                        <div class="thanks-message text-center" id="text-message"> <img src="https://i.imgur.com/O18mJ1K.png" width="100" class="mb-4">
+                        <div class="thanks-message text-center" id="text-message">
                             <h3>Thanks for your Donation!</h3> <span>Your donation has been entered! We will contact you shortly!</span>
                         </div>
                         <div style="overflow:auto;" id="nextprevious">
-                            <div style="float:left;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)">قبلی</button> <button type="button" id="nextBtn" onclick="nextPrev(1)">بعدی</button> </div>
+                            <div style="float:left;"> <button type="button" id="prevBtn" onclick="nextPrev(-1)">مرحله قبلی</button> <button type="submit" id="nextBtn" name="submit" onclick="nextPrev(1)">مرحله بعدی</button> </div>
                         </div>
                     </form>
+
+<!--                    <div class="col-12">-->
+<!--                        <button type="submit" class="btn btn-theme" name="submit"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>-->
+<!--                    </div>-->
+                        <p class="text-danger"></p>
+
+
                 </div>
-            </div>
-        </div>
+             </div>
+         </div>
 
-
-
-
-<!--old form code-->
-    <div class="order">
-
-
-    <div class="vgc-form row">
-
-
-
-            <div class="card-form">
-                <form method="post" class="row g-3">
-
-
-                    <div class="col-12">
-                        <label class="form-label">نام گبرنده</label>
-                        <input type="text" class="form-control" name="receivername"   required=""
-                               oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
-                               oninput="setCustomValidity('')"/>
-
-                    </div>
-                    <div class="col-12">
-                        <label  class="form-label">موبایل گیرنده </label>
-                        <input type="text" class="form-control" name="receiverphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
-                    </div>
-                    <div class="col-12">
-                        <label class="form-label">پیام شما</label>
-                        <input type="text" class="form-control" name="message"  />
-                    </div>
-
-                    <div class="col-12">
-                        <label class="form-label">نام فرستنده</label>
-                        <input type="text" class="form-control" name="sendername"   required=""
-                               oninvalid="this.setCustomValidity('وارد کردن نام گیرنده الزامی است')"
-                               oninput="setCustomValidity('')"/>
-                    </div>
-
-                    <div class="col-12">
-                        <label  class="form-label">موبایل فرستنده</label>
-                        <input type="text" class="form-control" name="senderphone"  required="" oninvalid="this.setCustomValidity('وارد کردن تلفن الزامی است')"  oninput="setCustomValidity('')">
-                    </div>
-
-
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-theme" name="submit"><i class="fal fa-heart"></i><span class="m-1">پرداخت آنلاین</span></button>
-                    </div>
-                </form>
-                <p class="text-danger"></p>
-
-            </div>
-
-        </div>
-    </div>
-
-    </div>
     <?php } else if($result==1){ ?>
     <div class="result">
         <div class="message">کارت مهربانی شما با موفقیت ثبت شد</div>

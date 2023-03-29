@@ -51,9 +51,9 @@ function showTab(n) {
         document.getElementById("prevBtn").style.display = "inline";
     }
     if (n == (x.length - 1)) {
-        document.getElementById("nextBtn").innerHTML = "پرداخت";
+        document.getElementById("nextBtn").innerHTML = "تایید و پرداخت";
     } else {
-        document.getElementById("nextBtn").innerHTML = "بعدی";
+        document.getElementById("nextBtn").innerHTML = " مرحله بعدی";
     }
     fixStepIndicator(n)
 }
