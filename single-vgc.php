@@ -67,47 +67,97 @@ function generateRandomString($length) {
                         <div class="all-steps" id="all-steps"> <span class="step"></span> <span class="step"></span> <span class="step"></span> <span class="step"></span> </div>
                         <div class="tab">
                             <div class="cards">
-                                <div class="row">
-                                    <?php
-
-                                    $args = array('category_name' => $post_slug, 'post_type' => 'products');
-                                    $posts = get_posts($args);
-                                    foreach($posts as $post) : setup_postdata($post); ?>
-                                        <article class="product-item col-sm-6 col-md-4 col-lg-3" >
-                                            <a href="<?php the_permalink(); ?>">
-
-                                                <?php the_post_thumbnail(); ?>
+                               <?php
 
 
-                                                <div class="title"><?php the_title(); ?></div>
+                               function load_terms( $taxonomy ){
+                                   global $wpdb;
+                                   $query = "SELECT DISTINCT 
+                                               * 
+                                              FROM
+                                               {$wpdb->terms} t 
+                                              INNER JOIN 
+                                               {$wpdb->term_taxonomy} tax 
+                                              ON 
+                                               tax.term_id = t.term_id
+                                              WHERE 
+                                               ( tax.taxonomy = '{$taxonomy}')";
+                                   $result = $wpdb->get_results( $query , ARRAY_A );
+
+                                   return $result;
+                               }
+
+
+                               $categories = load_terms('vgc_cat');
+
+                               echo '<ul class="nav nav-tabs" id="myTab">';
+                               foreach ( $categories as $category ) {
+
+                                       $active_class = ( $category['slug'] === 'con' ) ? 'active' : '';
+                                       echo '<li class="nav-item"><a class="nav-link ' . $active_class . '" href="#' . $category['slug'] . '">' . $category['name'] . '</a></li>';
+
+                               }
+                               echo '</ul>';
+                                ?>
+
+                                <div class="tab-content" id="myTabContent">
+                                    <div id="con" class="tab-pane fade show active">
+                                        <div class="row">
+                                            <?php
+
+                                            $args = array(
+                                                    'category_slug' => 'con',
+                                                    'post_type' => 'vgc',
+                                            );
+                                            $posts = get_posts($args);
+                                            foreach($posts as $post) : setup_postdata($post); ?>
+                                                <article class="product-item col-sm-6 col-md-4 col-lg-3" >
+                                                    <a href="<?php the_permalink(); ?>">
+
+                                                        <?php the_post_thumbnail(); ?>
+
+
+                                                        <div class="title"><?php the_title(); ?></div>
 
 
 
-                                            </a>
-                                        </article>
-                                    <?php endforeach;?>
+                                                    </a>
+                                                </article>
+                                            <?php endforeach;?>
 
 
-                                    <?php
-                                    $count=0;
-                                    $args = array(
-                                        'post_type'      => 'vgc',
-                                        'posts_per_page' => 10,
-                                    );
-                                    $loop = new WP_Query($args);
-                                    while ( $loop->have_posts() ) {
-                                        $count++;
-                                        $loop->the_post();
-                                        ?>
-                                        <div class="col-sm-4 col-md-3 col-lg-2">
-                                            <?php the_title(); ?>
-                                            <img id="sel<?php echo $count;?>" src="<?php the_post_thumbnail_url(); ?>" alt=""
-                                                 class="sel-picture"    onclick="changeImage(<?php echo $count; ?>)">
+                                            <?php
+                                            $count=0;
+                                            $args = array(
+                                                'post_type'      => 'vgc',
+                                                'posts_per_page' => 10,
+                                                'tax_query' => array(
+                                                    array(
+                                                        'taxonomy' => 'vgc_cat',
+                                                        'field' => 'term_id',
+                                                        'terms'    => 26
+                                                    ),
+                                                ),
+                                            );
+                                            $loop = new WP_Query($args);
+                                            while ( $loop->have_posts() ) {
+                                                $count++;
+                                                $loop->the_post();
+                                                ?>
+                                                <div class="col-sm-4 col-md-3 col-lg-2">
+                                                    <?php the_title(); ?>
+                                                    <img id="sel<?php echo $count;?>" src="<?php the_post_thumbnail_url(); ?>" alt=""
+                                                         class="sel-picture"    onclick="changeImage(<?php echo $count; ?>)">
+                                                </div>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
-                                        <?php
-                                    }
-                                    ?>
+                                    </div>
+
                                 </div>
+
+
                             </div>
                             <div class="vgc-form row">
                             <div id="preview" class="preview_form col-lg-6">

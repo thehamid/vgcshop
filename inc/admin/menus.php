@@ -43,6 +43,7 @@ function register_vgc_post_type() {
         'hierarchical'       => true,
         'menu_position'      => null,
         'supports'           => array( 'title', 'thumbnail', ),
+        'taxonomies' => ['vgc_cat'],
         'rewrite'       => ['slug' => 'vgc'],
     );
 
@@ -85,9 +86,9 @@ function custom_taxonomy() {
         'show_in_nav_menus'          => true,
         'show_tagcloud'              => true,
     );
-    register_taxonomy( 'vgc', array( 'vgc' ), $args );
-}
+    register_taxonomy( 'vgc_cat', array( 'vgc' ), $args );
 
+}
 add_action( 'init', 'custom_taxonomy', 2 );
 
 
